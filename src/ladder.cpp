@@ -8,7 +8,12 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
 }
 
 bool is_adjacent(const string& word1, const string& word2){
-
+    std::size_t word1Size = word1.size();
+    std::size_t word2Size = word2.size();
+    if(word1Size==word2Size || word1Size + 1 == word2Size || word1Size == word2Size + 1 || word1Size - 1 == word2Size || word1Size == word2Size - 1){
+        return true; 
+    }
+    return false; 
 }
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list){
@@ -33,10 +38,17 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
     }
+    return 
 }
 
 void load_words(set<string> & word_list, const string& file_name){
-
+    std::ifsteam in(file_name);
+    in.open();
+    std::string word; 
+    while(in >> word){
+        word_list.insert(std::transform(word.begin() , word.end() , ::tolower));
+    }
+    in.close(); 
 }
 
 void print_word_ladder(const vector<string>& ladder){
