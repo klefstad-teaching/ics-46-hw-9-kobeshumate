@@ -34,6 +34,7 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
     if(distances[destination] == INF){
         std::cerr << "not found" << std::endl;  
     }
+    
     std::vector<int> sp;
     for(auto i = destination; previous[i] != UNDEFINED; --i){
         sp.push_back(i); 
@@ -52,8 +53,7 @@ void print_path(const std::vector<int>& v, int total){
 
 /*
 g++ -c ./src/dijkstras.cpp -o ./src/dijkstras.o
-g++ -c ./src/ladder.cpp -o ./src/ladder.o
-
-./src/main.exe
+g++ ./src/dijkstras.o ./src/dijkstras_main.cpp -o ./src/dijkstras_main.exe
+./src/dijkstras_main.exe
 
 */

@@ -42,7 +42,7 @@ bool is_adjacent(const string& word1, const string& word2){
             }
         }    
 
-        if(differingLettersCount == 1)
+        if(differingLettersCount <= 1)
             return true; 
 
     } else {
@@ -106,6 +106,7 @@ void load_words(set<string> & word_list, const string& file_name){
 }
 
 void print_word_ladder(const vector<string>& ladder){
+    std::cout << "Word ladder found: "; 
     for(auto word : ladder){
         std::cout << word << ' '; 
     }
