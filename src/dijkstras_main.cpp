@@ -1,8 +1,8 @@
 #include "dijkstras.h"
 
 int main(){
-    Graph G;
-    G.file_to_graph("small.txt"); 
+    // Graph G;
+    // G.file_to_graph("small.txt"); 
 
 
     return 0;

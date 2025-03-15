@@ -1,13 +1,12 @@
 #include "dijkstras.h"
 
-
 std::vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous){ // finds shortest path
     int numVerts = G.size();
     std::vector<int> distances(numVerts , INF);
     std::vector<bool> visited(numVerts , false);
     distances[source] = 0; 
     previous[source] = UNDEFINED;
-    std::priority_queue<pair<int,int>> minHeap; // will probably have to do a comparator fn to have the minheap pull the vertex with the least weight out 
+    std::priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>> > minHeap; // will probably have to do a comparator fn to have the minheap pull the vertex with the least weight out 
     minHeap.push({source , 0});
     while(!minHeap.empty()){
         int u = minHeap.top().first; 
@@ -34,7 +33,7 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
     if(distances[destination] == INF){
         std::cerr << "not found" << std::endl;  
     }
-    
+
     std::vector<int> sp;
     for(auto i = destination; previous[i] != UNDEFINED; --i){
         sp.push_back(i); 
@@ -45,10 +44,10 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
 
 
 void print_path(const std::vector<int>& v, int total){
-    std::cout << " Total cost is " << total << std::endl; 
     for(auto i : v){
         std::cout << i << ' '; 
     }
+    std::cout << "\nTotal cost is " << total << std::endl; 
 }
 
 /*
