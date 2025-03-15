@@ -10,6 +10,12 @@ using namespace std;
 constexpr int INF = numeric_limits<int>::max();
 constexpr int UNDEFINED = -1; 
 
+struct weightComparison{
+    bool operator()(const pair<int,int> & a , const pair<int,int> & b) const{
+        return a.second > b.second; 
+    }
+};
+
 struct Edge {
     int src=0;
     int dst=0;

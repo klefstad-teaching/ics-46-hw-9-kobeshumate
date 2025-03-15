@@ -6,7 +6,7 @@ std::vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>&
     std::vector<bool> visited(numVerts , false);
     distances[source] = 0; 
     previous[source] = UNDEFINED;
-    std::priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>> > minHeap; // will probably have to do a comparator fn to have the minheap pull the vertex with the least weight out 
+    std::priority_queue<pair<int,int> , vector<pair<int,int>> , weightComparison > minHeap; // will probably have to do a comparator fn to have the minheap pull the vertex with the least weight out 
     minHeap.push({source , 0});
     while(!minHeap.empty()){
         int u = minHeap.top().first; 
