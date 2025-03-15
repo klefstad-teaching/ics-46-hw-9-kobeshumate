@@ -35,7 +35,7 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
     }
 
     std::vector<int> sp;
-    for(auto i = distances[destination]; distances[i] != 0; --i){
+    for(auto i = destination; previous[i] != UNDEFINED && distances[i] != 0; --i){
         sp.push_back(previous[i]); 
     }
     return sp; 
