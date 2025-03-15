@@ -53,7 +53,7 @@ bool is_adjacent(const string& word1, const string& word2){
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list){
     if(word_list.find(end_word) == word_list.end()){
-        std::cout << "word was not found" << std::endl; 
+        // std::cout << "word was not found" << std::endl; 
         return {};
     }
     
@@ -106,12 +106,15 @@ void load_words(set<string> & word_list, const string& file_name){
 }
 
 void print_word_ladder(const vector<string>& ladder){
-    std::cout << "Word ladder found: "; 
-    for(auto word : ladder){
-        std::cout << word << ' '; 
+    if(ladder.empty()){
+        std::cout << "No word ladder found. \n"; 
+    } else {
+        std::cout << "Word ladder found: "; 
+        for(auto word : ladder){
+            std::cout << word << ' '; 
+        }
+        std::cout << std::endl;
     }
-    std::cout << std::endl;     
-
 }
 
 #define myAssert(e) {std::cout << #e << ((e) ? " passed" : " failed") << std::endl;}
@@ -137,6 +140,8 @@ void verify_word_ladder(){
     myAssert(generate_word_ladder("car" , "cheat" , word_list).size() == 4);
     print_word_ladder(generate_word_ladder("car" , "cheat" , word_list)); 
 
+    myAssert(generate_word_ladder("car" , "smeegledanglesborgjargon" , word_list).size() == 0);
+    print_word_ladder(generate_word_ladder("car" , "smeegledanglesborgjargon" , word_list)); 
 }
 
 
